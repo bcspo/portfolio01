@@ -1,0 +1,35 @@
+$(function () {
+ // $('.header').load('./include/header.html');
+ // $('.footer').load('./include/footer.html');
+
+  var lnbBtn = $('.sub__lnb > p');
+  var lnb = $('.sub__lnb .lnb__wrap');
+  lnbBtn.on('click', function(){
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')){
+      lnb.css('display', 'flex').stop()
+      .animate({
+        opacity: 1
+      }, 300)
+    } else {
+      lnb.stop()
+      .animate({
+        opacity: 0
+      }, 300, function(){
+        $(this).hide();
+      })
+    }
+  })
+
+
+  var target = $('.animated, .sub-visual')
+
+  target.each(function (i, v) {
+    $(this).waypoint(function () {
+      $(v).addClass('on')
+    }, {
+      offset: '100%'
+    })
+  })
+
+})
